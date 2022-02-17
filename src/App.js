@@ -11,6 +11,12 @@ export default class App extends Component {
     filter: '',
   };
 
+  componentDidMount() {
+    const localStorageContacts = JSON.parse(localStorage.getItem('Contacts'));
+
+    this.setState({ contacts: localStorageContacts });
+  }
+
   componentDidUpdate(prevProps, prevState) {
     const { contacts } = this.state;
 
