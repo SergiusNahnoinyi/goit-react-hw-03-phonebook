@@ -11,6 +11,14 @@ export default class App extends Component {
     filter: '',
   };
 
+  componentDidUpdate(prevProps, prevState) {
+    const { contacts } = this.state;
+
+    if (contacts !== prevState.contacts) {
+      localStorage.setItem('Contacts', JSON.stringify(contacts));
+    }
+  }
+
   formSubmitHandler = formData => {
     const { contacts } = this.state;
     const similarContact = contacts.find(
