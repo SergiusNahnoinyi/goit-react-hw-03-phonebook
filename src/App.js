@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
 import ContactsForm from './components/ContactsForm';
@@ -34,7 +36,7 @@ export default class App extends Component {
     );
 
     if (similarContact) {
-      return alert(`${similarContact.name} is already in your list`);
+      return toast.error(`${similarContact.name} is already in your list`);
     } else
       this.setState(({ contacts }) => ({
         contacts: [...contacts, formData],
@@ -75,6 +77,7 @@ export default class App extends Component {
           contacts={filtredContacts}
           onDelete={this.deleteContact}
         />
+        <ToastContainer />
       </section>
     );
   }
